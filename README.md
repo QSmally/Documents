@@ -1,7 +1,7 @@
 
-# Terminal configuration
+# LaTeX configuration
 
-Bash and Vim dotfiles.
+Environments and settings for LaTeX documents.
 
-Symlink all relevant files to `~` or use the `Install.sh` script.
+Symlink or copy all relevant files to `\include{<path>}` in your project.
 
