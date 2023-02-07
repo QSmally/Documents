@@ -2,10 +2,13 @@
 \documentclass[a4paper,10pt]{report}
 
 % Packages
-\include{../Base-Package.tex}
-% \include{../Diagram-Pictures.tex}
-% \include{../Inline-Chapter-Style.tex}
-% \include{../Programming-Blocks.tex}
+\include{../../Packages/Base-Package.tex}
+% \include{../../Extensions/Diagram-Pictures.tex}
+% \include{../../Extensions/Inline-Chapter-Style.tex}
+% \include{../../Extensions/Programming-Blocks.tex}
+
+% Constants
+\newcommand\authorname{Author Name}
 
 \begin{document}
 
@@ -13,19 +16,20 @@
 \begin{titlepage}
     \centering
     \vspace*{3.5cm}
+    \large{A Template Project}\\
     \huge\textbf{Example Title}\\
-    \large An example subtitle 
+    \large{An example subtitle for this project}
 
     \vfill
 
     January 2023\\
     \vspace{.25cm}
-    \Large Author Name 
-    \vspace{7.5cm}
+    \Large\authorname 
+    \vspace{4.5cm}
 \end{titlepage}
 
 % Contents
-\tableofcontents
+% \tableofcontents
 
 % Chapters
 % \subfile{01-Introduction.tex}
