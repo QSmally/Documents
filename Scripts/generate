@@ -27,7 +27,7 @@ fi
 
 START_FILE=$(find $1 -maxdepth 1 -name '00-*.tex')
 
-if [ -z $START_FILE ]; then
+if [ -z "$START_FILE" ]; then
     echo "error: no 00- starting file found"
     exit 1
 fi
@@ -36,15 +36,24 @@ RESOLVED_PATH=$(dirname $(readlink -f $START_FILE))
 JOB=$(basename $RESOLVED_PATH)
 OUTPUT_FILE=$JOB.pdf
 
-echo "input directory = $1"
-echo "starting file   = $(basename $START_FILE)"
-echo "output file     = $OUTPUT_FILE"
+echo "info: input directory = $1"
+echo "info: starting file   = $(basename $START_FILE)"
+echo "info: output file     = $OUTPUT_FILE"
 
 CWD=$(pwd)
+
+if [ -e "$RESOLVED_PATH/References.bib" ] &&
+   [ -e "$RESOLVED_PATH/Compilation/$JOB.aux" ]; then
+    echo "mark: executing bib routine"
+    cd $RESOLVED_PATH/Compilation/
+    cp $RESOLVED_PATH/References.bib $RESOLVED_PATH/Compilation/
+    bibtex $JOB.aux
+fi
+
 cd $RESOLVED_PATH
 mkdir -p Compilation/
 
-# TODO: Bib subroutine
+echo "mark: beginning tex generation"
 
 pdflatex \
     -output-directory=Compilation \
