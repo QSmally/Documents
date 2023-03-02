@@ -13,7 +13,7 @@
 #   starts with the '00-' prefix as per convention. The name of the directory of
 #   the source files (the target) will be the name of the rendered document.
 # [destination]: destination directory of the rendered PDF, and if it isn't
-#   supplied, 'Rendered Documents'. If none are §available, puts it in the pwd.
+#   supplied, 'Rendered Documents'. If none are available, puts it in the pwd.
 #
 # <Submodule>/Scripts/generate Report/
 # <Submodule>/Scripts/generate Documentation/ Output\ Files/
