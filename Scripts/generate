@@ -6,8 +6,8 @@
 # Command usage:
 # <Submodule>/Scripts/generate <target> [destination]
 #
-# Note: if a 'References.bib' and auxilary file are present, 'bibtex' will be
-#   ran before 'pdflatex' will.
+# Note: if 'References.bib' and auxilary files are present, 'bibtex' will be ran
+#   before 'pdflatex' will.
 #
 # <target>: source directory of the document target, finds starting file which
 #   starts with the '00-' prefix as per convention. The name of the directory of
@@ -15,29 +15,29 @@
 # [destination]: destination directory of the rendered PDF, and if it isn't
 #   supplied, 'Rendered Documents'. If none are available, puts it in the pwd.
 #
+# <Submodule>/Scripts/generate .
 # <Submodule>/Scripts/generate Report/
 # <Submodule>/Scripts/generate Documentation/ Output\ Files/
-# <Submodule>/Scripts/generate .
 #
 
-if [ $# -eq 0 ] || [ ! -d $1 ]; then
+if [ $# -eq 0 ] || [ ! -d "$1" ]; then
     echo "error: input a path to a directory"
     exit 1
 fi
 
-START_FILE=$(find $1 -maxdepth 1 -name '00-*.tex')
+START_FILE=$(find "$1" -maxdepth 1 -name '00-*.tex')
 
 if [ -z "$START_FILE" ]; then
-    echo "error: no 00- starting file found"
+    echo "error: no 00-*.tex starting file found"
     exit 1
 fi
 
-RESOLVED_PATH=$(dirname $(readlink -f $START_FILE))
-JOB=$(basename $RESOLVED_PATH)
+RESOLVED_PATH=$(dirname "$(readlink -f "$START_FILE")")
+JOB=$(basename "$RESOLVED_PATH")
 OUTPUT_FILE=$JOB.pdf
 
 echo "info: input directory = $1"
-echo "info: starting file   = $(basename $START_FILE)"
+echo "info: starting file   = $(basename "$START_FILE")"
 echo "info: output file     = $OUTPUT_FILE"
 
 CWD=$(pwd)
@@ -45,21 +45,21 @@ CWD=$(pwd)
 if [ -e "$RESOLVED_PATH/References.bib" ] &&
    [ -e "$RESOLVED_PATH/Compilation/$JOB.aux" ]; then
     echo "mark: executing bib routine"
-    cd $RESOLVED_PATH/Compilation/
-    cp $RESOLVED_PATH/References.bib $RESOLVED_PATH/Compilation/
-    bibtex $JOB.aux
+    cd "$RESOLVED_PATH/Compilation/"
+    cp "$RESOLVED_PATH/References.bib" .
+    bibtex "$JOB.aux"
 fi
 
-cd $RESOLVED_PATH
+cd "$RESOLVED_PATH"
 mkdir -p Compilation/
 
 echo "mark: beginning tex generation"
 
 pdflatex \
     -output-directory=Compilation \
-    -jobname=$JOB \
+    -jobname="$JOB" \
     -interaction=nonstopmode \
-    $(basename $START_FILE)
+    "$(basename "$START_FILE")"
 if [ $? -ne 0 ]; then
     exit 1
 fi
@@ -68,9 +68,10 @@ cd $CWD
 OUTPUT_DIRECTORY=${2:-'Rendered Documents'}
 
 if [ -d "$OUTPUT_DIRECTORY" ]; then
-    cp $RESOLVED_PATH/Compilation/$OUTPUT_FILE "$OUTPUT_DIRECTORY"
+    cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" "$OUTPUT_DIRECTORY"
     echo "done: copied output to $OUTPUT_DIRECTORY"
 else
-    cp $RESOLVED_PATH/Compilation/$OUTPUT_FILE .
+    cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" .
     echo "done: copied output to pwd"
 fi
+
