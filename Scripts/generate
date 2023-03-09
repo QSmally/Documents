@@ -14,10 +14,6 @@
 #
 # Note: if 'References.bib' and auxilary files are present, 'bibtex' will be ran
 #   before 'pdflatex' will.
-# Note: current non-adjustable containers:
-#   <target>/Compilation/
-#   <target>/00-.*.tex
-#   <target>/References.bib
 #
 # <Submodule>/Scripts/generate .
 # <Submodule>/Scripts/generate Report/
@@ -64,18 +60,13 @@ pdflatex \
     -jobname="$JOB" \
     -interaction=nonstopmode \
     "$(basename "$START_FILE")"
-if [ $? -ne 0 ]; then
+if [ ! -e "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" ]; then
     exit 1
 fi
 
 cd $CWD
-OUTPUT_DIRECTORY=${2:-'Rendered Documents'}
 
-if [ -d "$OUTPUT_DIRECTORY" ]; then
-    cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" "$OUTPUT_DIRECTORY"
-    echo "done: copied output to $OUTPUT_DIRECTORY"
-else
-    cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" .
-    echo "done: copied output to pwd"
-fi
+OUTPUT_DIRECTORY=${2:-'Rendered Documents'}
+[ -d "$OUTPUT_DIRECTORY" ] && OUTPUT=$OUTPUT_DIRECTORY || OUTPUT=.
+cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" "$OUTPUT"
 
