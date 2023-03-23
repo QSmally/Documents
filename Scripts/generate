@@ -12,8 +12,8 @@
 # [destination]: destination directory of the rendered PDF, and if it isn't
 #   supplied, 'Rendered Documents'. If none are available, puts it in the pwd.
 #
-# Note: if 'References.bib' and auxilary files are present, 'bibtex' will be ran
-#   before 'pdflatex' will.
+# Note: if a file with the '.bib' suffix and an auxilary file are present, the
+#   'bibtex' command will be ran before 'pdflatex' will.
 #
 # <Submodule>/Scripts/generate .
 # <Submodule>/Scripts/generate Report/
@@ -41,19 +41,21 @@ echo "info: starting file   = $(basename "$START_FILE")"
 echo "info: output file     = $OUTPUT_FILE"
 
 CWD=$(pwd)
+BIB_FILE=$(find "$1" -maxdepth 1 -name '*.bib')
 
-if [ -e "$RESOLVED_PATH/References.bib" ] &&
-   [ -e "$RESOLVED_PATH/Compilation/$JOB.aux" ]; then
-    echo "mark: executing bib routine"
+if [ ! -z "$BIB_FILE" ] && [ -e "$RESOLVED_PATH/Compilation/$JOB.aux" ]; then
+    echo "mark: bibTeX routine"
+    echo "info: bib file        = $(basename "$BIB_FILE")"
+
     cd "$RESOLVED_PATH/Compilation/"
-    cp "$RESOLVED_PATH/References.bib" .
+    cp "$RESOLVED_PATH/$(basename "$BIB_FILE")" .
     bibtex "$JOB.aux"
 fi
 
 cd "$RESOLVED_PATH"
 mkdir -p Compilation/
 
-echo "mark: beginning tex generation"
+echo "mark: TeX compile"
 
 pdflatex \
     -output-directory=Compilation \
