@@ -1,6 +1,10 @@
 
+# System
 .DS_Store
 
-# LaTeX
-Compilation
+# File editor
+Session.vim
+*.swp
 
+# LaTeX generation
+Compilation
