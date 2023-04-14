@@ -5,9 +5,9 @@
 \usepackage{inconsolata} % Monospace font
 \usepackage{nameref}     % References
 
-\usepackage[T1]{fontenc}                              % ...
+\usepackage[T1]{fontenc}                              % Special chars
+\usepackage[export]{adjustbox}                        % Graphicsx improvement
 \usepackage[font=small,labelfont=bf]{caption}         % Figure captions
-\usepackage[export]{adjustbox}                        % ...
 \usepackage[margin=2.4cm]{geometry}                   % Page margins
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref} % References
 
@@ -15,4 +15,3 @@
 \newcommand{\tref}[1]{\autoref{#1} ('\nameref{#1}')}
 \newcommand{\vref}[2]{\hyperref[#1]{#2}}
 \newcommand{\cref}[2]{\hyperref[#1]{#2 \ref{#1}}}
-
