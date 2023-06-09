@@ -4,12 +4,16 @@
 \usepackage{tabularx}    % Tables
 \usepackage{inconsolata} % Monospace font
 \usepackage{nameref}     % References
+\usepackage{parskip}     % Paragraph indentation
 
 \usepackage[T1]{fontenc}                              % Special chars
 \usepackage[export]{adjustbox}                        % Graphicsx improvement
 \usepackage[font=small,labelfont=bf]{caption}         % Figure captions
 \usepackage[margin=2.4cm]{geometry}                   % Page margins
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref} % References
+
+% Paragraphs
+\setlength\parindent{0pt}
 
 % References
 \newcommand{\tref}[1]{\autoref{#1} ('\nameref{#1}')}
