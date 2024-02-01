@@ -20,6 +20,8 @@
 # <Submodule>/Scripts/generate Documentation/ Output\ Files/
 #
 
+set -e
+
 if [ $# -eq 0 ] || [ ! -d "$1" ]; then
     echo "error: input a path to a directory"
     exit 1
@@ -49,7 +51,7 @@ if [ ! -z "$BIB_FILE" ] && [ -e "$RESOLVED_PATH/Compilation/$JOB.aux" ]; then
 
     cd "$RESOLVED_PATH/Compilation/"
     cp "$RESOLVED_PATH/$(basename "$BIB_FILE")" .
-    bibtex "$JOB.aux"
+    bibtex "$JOB.aux" > /dev/null
 fi
 
 cd "$RESOLVED_PATH"
@@ -61,7 +63,7 @@ pdflatex \
     -output-directory=Compilation \
     -jobname="$JOB" \
     -interaction=nonstopmode \
-    "$(basename "$START_FILE")"
+    "$(basename "$START_FILE")" > /dev/null
 if [ ! -e "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" ]; then
     exit 1
 fi
@@ -72,3 +74,4 @@ OUTPUT_DIRECTORY=${2:-'Rendered Documents'}
 [ -d "$OUTPUT_DIRECTORY" ] && OUTPUT=$OUTPUT_DIRECTORY || OUTPUT=.
 cp "$RESOLVED_PATH/Compilation/$OUTPUT_FILE" "$OUTPUT"
 
+echo "done; no errors"
