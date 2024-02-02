@@ -1,0 +1,45 @@
+
+\documentclass[a4paper,10pt]{report}
+
+% Packages
+\input{../../Packages/Paper.tex}
+\input{../../Extensions/Diagram-Picture-Style.tex}
+% \input{../../Extensions/Clist-Environment.tex}
+% \input{../../Extensions/Inline-Chapter-Style.tex}
+% \input{../../Key-Value-Newline.tex}
+
+% Constants
+\newcommand\authorname{Author Name}
+
+\begin{document}
+
+% Title
+\begin{titlepage}
+    \centering
+    \vspace*{3.5cm}
+    \large{A Template Project}\\
+    \huge\textbf{Example Title}\\
+    \large{An example subtitle for this project}
+
+    \vfill
+
+    January 2023\\
+    \vspace{.25cm}
+    \Large\authorname 
+    \vspace{3.5cm}
+
+    \tikz[remember picture,overlay]\node[anchor=south west] at (current page.south west) {
+        \includegraphics[height=1.5cm]{Picture.png}
+        \includegraphics[height=1.5cm]{Picture.png}
+    };
+\end{titlepage}
+
+% Contents
+% \tableofcontents
+% \listoffigures
+% \listoftables
+
+% Chapters
+% \subfile{01-Introduction.tex}
+
+\end{document}
