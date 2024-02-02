@@ -1,0 +1,12 @@
+
+\usepackage{environ}
+
+\NewEnviron{prologue}{
+    \begin{tabularx}{\linewidth}{XXX}
+        \textbf{Languages} & \textbf{Tools} & \textbf{Dependencies}\\
+        \BODY
+    \end{tabularx}
+
+    \vspace{.3cm}
+    \hrule
+}
