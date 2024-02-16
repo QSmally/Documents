@@ -1,0 +1,27 @@
+
+\usepackage[nopostdot,nonumberlist,nogroupskip,acronym]{glossaries}
+
+\makeglossaries
+\glsdisablehyper
+\renewcommand\glossarysection[2][]{}
+
+% Style
+\newglossarystyle{tabular}{
+    \renewenvironment{theglossary}
+        {\tabularx{\linewidth}{lX}}
+        {\endtabularx}
+    \renewcommand*{\glossentry}[2]{
+        \glsentryitem{##1}\textbf{\glstarget{##1}{\glossentryname{##1}}}: & \glossentrydesc{##1}\\
+    }
+}
+
+% Terminology page
+\newcommand\terml{
+    \chapter*{Terminology}
+    \printglossary[style=tabular]
+    \section*{Abbreviations}
+    \printglossary[type=\acronymtype,style=tabular]
+}
+
+\providecommand\termlfilename{Terminology}
+\loadglsentries{\termlfilename}
