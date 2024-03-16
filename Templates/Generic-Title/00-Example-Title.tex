@@ -1,0 +1,34 @@
+
+\documentclass[a4paper,10pt]{report}
+
+\input{../../Packages/Paper.tex}
+\input{../../Extensions/Diagram-Picture-Style.tex}
+
+\usepackage{lipsum}
+\usepackage{xstring}
+
+\newcommand\maintitle{Example Title}
+\newcommand\pretitle{A Template Project}
+\newcommand\subtitle{An example subtitle for this project}
+\newcommand\location{Earth}
+\newcommand\authors{\Large{Author Name}}
+
+\newcommand\titleabstract{
+    % lorem{{{
+    Elementum. Nam urna felis, sodales ut, luctus vel, condimentum vitae, est.
+    Vestibulum ut augue. Nunc laoreet sapien quis neque semper dictum.
+    Phasellus rhoncus est id turpis. Vestibulum in elit at odio pellentesque
+    volutpat. Nam nec tortor. Suspendisse porttitor consequat nulla. Morbi
+    suscipit tincidunt nisi. Sed laoreet, mauris et tincidunt facilisis, est
+    nisi pellentesque ligula, sit amet convallis neque dolor at sapien. Aenean
+    viverra justo ac sem.
+    % lorem}}}
+}
+
+\newcommand\logoleft{\includegraphics[height=1.5cm]{Picture.png}}
+
+\begin{document}
+
+\subfile{../../Elements/Title-Page.tex}
+
+\end{document}

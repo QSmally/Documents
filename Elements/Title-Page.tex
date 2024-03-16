@@ -1,0 +1,76 @@
+
+% Top
+%   r: maintitle
+%   o: pretitle, subtitle
+%   d: -
+\providecommand\pretitle{\leavevmode}
+\providecommand\subtitle{}
+
+% Middle
+%   r: -
+%   o: titleabstract, location, version
+%   d: titledate (\today)
+\providecommand\titledate{\today}
+
+% Bottom
+%   r: authors
+%   o: logoleft, logoright
+%   d: -
+
+\begin{titlepage}
+    \centering
+    \vspace*{3.5cm}
+    \large\pretitle\\
+    \huge\textbf\maintitle\\
+    \large\subtitle
+
+    \ifdefined\titleabstract
+        \vspace{7.5cm}
+        \textsc{abstract}
+        \vspace{.1cm}
+
+        \begin{minipage}{.8\linewidth}
+            \titleabstract
+        \end{minipage}
+    \fi
+
+    \vfill
+
+    \ifdefined\location
+        \location\\
+    \fi
+
+    \titledate\\
+
+    \ifdefined\version
+        Version \version\\
+    \fi
+
+    \vspace{.5cm}
+
+    \begin{tabular}{l}
+        \authors
+    \end{tabular} 
+
+    \ifdefined\titleabstract
+        \vspace{2.5cm}
+    \else
+        \vspace{3.5cm}
+    \fi
+
+    \ifdefined\logoleft\else
+        \vspace{1cm}
+    \fi
+
+    \ifdefined\logoleft
+        \tikz[remember picture,overlay]\node[anchor=south west] at (current page.south west) {
+            \logoleft
+        };
+    \fi
+
+    \ifdefined\logoright
+        \tikz[remember picture,overlay]\node[anchor=south east] at (current page.south east) {
+            \logoright
+        };
+    \fi
+\end{titlepage}
