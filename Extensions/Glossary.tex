@@ -4,6 +4,7 @@
 \makeglossaries
 \glsdisablehyper
 \renewcommand\glossarysection[2][]{}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
 
 % Style
 \newglossarystyle{tabular}{
@@ -15,12 +16,26 @@
     }
 }
 
+\newglossarystyle{tabular-2}{
+    \renewenvironment{theglossary}
+        {\tabularx{\linewidth}{@{}lL@{}lL@{}}}
+        {\endtabularx}
+    \newcounter{abbrrenders}
+    \setcounter{abbrrenders}{-1}
+    \renewcommand*{\glossentry}[2]{
+        \stepcounter{abbrrenders}
+        \glsentryitem{##1}
+        \textbf{\glstarget{##1}{\glossentryname{##1}}}: & \glossentrydesc{##1}
+        \ifodd\value{abbrrenders}\\\else&\fi
+    }
+}
+
 % Terminology page
 \newcommand\terml{
     \chapter*{Terminology}
     \printglossary[style=tabular]
     \section*{Abbreviations}
-    \printglossary[type=\acronymtype,style=tabular]
+    \printglossary[type=\acronymtype,style=tabular-2]
 }
 
 \providecommand\termlfilename{Terminology}
