@@ -12,31 +12,44 @@
 
     {
         \centering
+        \ifdefined\pretitle{\textbf{\pretitle\\}}\fi
         {\Huge \maintitle\\}
         \vspace{4ex}
-        {\Large \authors\\}
-        \vspace{2ex}
-        \titledate\\
-        \vspace{4ex}
+
+        \ifdefined\titleabstract
+            {\Large \authors\\}
+            \vspace{2ex}
+            \titledate\\
+        \fi
     }
 
     \vfill
 
-    {
-        \centering
-        \textbf{Abstract}\\
-        \vspace{4px}
-    }
+    \ifdefined\titleabstract
+        {
+            \centering
+            \textbf{Abstract}\\
+            \vspace{4px}
+        }
 
-    \noindent
-
-    \ifdefined\fullpagestyle
-        \titleabstract
-    \else
-        \centering
-        \begin{minipage}{.8\linewidth}
+        \ifdefined\fullpagestyle
+            \noindent
             \titleabstract
-        \end{minipage}
+        \else
+            \centering
+            \begin{minipage}{.8\linewidth}
+                \noindent
+                \titleabstract
+            \end{minipage}
+        \fi
+    \else
+        {
+            \centering
+            \authors\\
+            \titledate\\
+            \location\\
+            \vspace{14ex}
+        }
     \fi
 
     \vspace{14ex}
