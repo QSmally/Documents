@@ -1,0 +1,43 @@
+
+\ifdefined\fullpagestyle
+    % Offset-Page-Style
+    \fullpagestyle
+\fi
+
+\providecommand\titledate{\today}
+
+% works best with the Offset-Page-Style package
+\begin{titlepage}
+    \vspace*{8ex}
+
+    {
+        \centering
+        {\Huge \maintitle\\}
+        \vspace{4ex}
+        {\Large \authors\\}
+        \vspace{2ex}
+        \titledate\\
+        \vspace{4ex}
+    }
+
+    \vfill
+
+    {
+        \centering
+        \textbf{Abstract}\\
+        \vspace{4px}
+    }
+
+    \noindent
+
+    \ifdefined\fullpagestyle
+        \titleabstract
+    \else
+        \centering
+        \begin{minipage}{.8\linewidth}
+            \titleabstract
+        \end{minipage}
+    \fi
+
+    \vspace{14ex}
+\end{titlepage}

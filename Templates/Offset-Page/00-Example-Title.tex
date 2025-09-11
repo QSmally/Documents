@@ -1,0 +1,35 @@
+
+\documentclass[a4paper,10pt]{report}
+
+\input{../../Packages/Paper.tex}
+\input{../../Extensions/Offset-Page-Style.tex}
+\input{../../Extensions/Citations-IEEE.tex}
+\input{../../Extensions/Citation-Colourless-Style.tex}
+\input{../../Extensions/Inline-Chapter-Style.tex}
+\input{../../Extensions/Tiny-Chapter-Style.tex}
+
+\usepackage{blindtext}
+
+\newcommand\maintitle{Example Title}
+\newcommand\authors{Author Name}
+\newcommand\titledate{February 21, 1884}
+\newcommand\titleabstract{\blindtext}
+
+\begin{document}
+
+\subfile{../../Elements/Title-Page-2.tex}
+
+\offsetpagestyle
+
+\chapter{Example chapter}
+
+An \cite{example} reference.
+
+\section{Example section}
+
+\blindtext
+\marginpar{Hello world!}
+
+\bibl
+
+\end{document}
