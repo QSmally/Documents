@@ -30,12 +30,24 @@
     }
 }
 
+\newglossarystyle{tabular-3}{
+    \renewenvironment{theglossary}
+        {\tabularx{\linewidth}{p{1.4in}X}}
+        {\endtabularx}
+    \renewcommand*{\glossentry}[2]{
+        \glsentryitem{##1}\textbf{\glstarget{##1}{\glossentryname{##1}}}: & \glossentrydesc{##1}\\
+    }
+}
+
+\providecommand\glostermstyle{tabular}
+\providecommand\glosabbrstyle{tabular-2}
+
 % Terminology page
 \newcommand\terml{
     \chapter*{Terminology}
-    \printglossary[style=tabular]
+    \printglossary[style=\glostermstyle]
     \section*{Abbreviations}
-    \printglossary[type=\acronymtype,style=tabular-2]
+    \printglossary[type=\acronymtype,style=\glosabbrstyle]
 }
 
 \providecommand\termlfilename{Terminology}

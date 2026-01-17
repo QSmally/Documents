@@ -1,0 +1,71 @@
+
+\documentclass[a4paper,10pt]{report}
+
+\newcommand\biblatexbackend{biber}
+\newcommand\glostermstyle{tabular-3}
+\newcommand\glosabbrstyle{tabular-3}
+
+\input{../../Packages/Paper.tex}
+\input{../../Extensions/Glossary.tex}
+\input{../../Extensions/Citations-IEEE.tex}
+\input{../../Extensions/Smaller-Page-Style.tex}
+\input{../../Extensions/Inline-Chapter-Style.tex}
+
+\hypersetup{
+pdftitle={Example title},
+pdfauthor={Example author},
+pdfkeywords={keyword1, keyword2, keyword3}
+}
+
+\newcommand\maintitle{Example Title}
+\newcommand\pretitle{A Template Project}
+\newcommand\subtitle{An example subtitle for this project}
+\newcommand\location{Earth}
+\newcommand\authors{{\large Author Name}}
+\newcommand\titledate{Version 1.0\\ \today}
+
+\begin{document}
+
+\input{../../Elements/Title-Page-2.tex}
+
+\clearpage
+\smallerpagestyle
+\terml
+\tableofcontents
+
+\chapter{Introduction}
+
+\gls{foo} and \gls{bar} \cite{example}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+ut aliquip ex ea commodo consequat. Duis splople autem vel eum iriure dolor in
+hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu
+feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
+blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla
+facilisi.
+
+\section{New section}
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming
+id quod mazim placerat facer possim assum. Typi non habent claritatem insitam;
+est usus legentis in iis qui facit eorum claritatem. Investigationes
+demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est
+etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit
+litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem
+modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+
+\subsection{New subsection}
+
+Nunc varius risus quis nulla. Vivamus vel magna. Ut rutrum. Aenean dignissim,
+leo quis faucibus semper, massa est faucibus massa, sit amet pharetra arcu nunc
+et sem. Aliquam tempor. Nam lobortis sem non urna. Pellentesque et urna sit
+amet leo accumsan volutpat. Nam molestie lobortis lorem. Quisque eu nulla.
+Donec id orci in ligula dapibus egestas. Donec sed velit ac lectus mattis
+sagittis.
+
+\bibl
+
+\end{document}

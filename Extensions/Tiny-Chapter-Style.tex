@@ -5,9 +5,13 @@
 \definecolor{gray}{rgb}{.5,.5,.5}
 \definecolor{light}{gray}{.85}
 
+\setlength\intextsep{32pt}
+
 \titleformat{\chapter}[hang]
     {\vspace{-28px}\huge\bfseries}
     {\thechapter\hspace{10pt}\textcolor{light}{|}\hspace{10pt}}
     {0pt}
     {\huge\bfseries}
-\titleformat*{\section}{\normalsize\bfseries}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titlespacing*{\section}{0pt}{24pt}{8pt}

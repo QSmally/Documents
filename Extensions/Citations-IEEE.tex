@@ -1,10 +1,20 @@
 
-\usepackage[square,numbers]{natbib}
+\providecommand\biblatexbackend{biber}
+\usepackage[backend=\biblatexbackend,style=ieee]{biblatex}
+\addbibresource{References.bib}
 
-% Style
-\bibliographystyle{IEEEtranSN}
+% Compatibility
+\newcommand\citep[1]{\cite{#1}} % natbib
 
 % Bibliography page
 \providecommand\biblfilename{References}
-\renewcommand{\bibsection}{\chapter*{\biblfilename}}
-\newcommand\bibl{\raggedright\bibliography{\biblfilename}}
+\newcommand\bibl{{\chapter*{\biblfilename}\raggedright\printbibliography[heading=none]}}
+
+% Colourless
+\makeatletter
+\renewcommand\hyper@natanchorstart[1]{}
+\renewcommand\hyper@natanchorend{}
+\renewcommand\hyper@natlinkstart[1]{}
+\renewcommand\hyper@natlinkend{}
+\renewcommand\hyper@natlinkbreak[2]{#1}
+\makeatother

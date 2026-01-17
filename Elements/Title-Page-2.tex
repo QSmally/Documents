@@ -1,12 +1,11 @@
 
 \ifdefined\fullpagestyle
-    % Offset-Page-Style
+    % Page-Style
     \fullpagestyle
 \fi
 
 \providecommand\titledate{\today}
 
-% works best with the Offset-Page-Style package
 \begin{titlepage}
     \vspace*{8ex}
 
@@ -50,6 +49,12 @@
             \location\\
             \vspace{14ex}
         }
+    \fi
+
+    \ifdefined\logoleft
+        \tikz[remember picture,overlay]\node[anchor=south west] at (current page.south west) {
+            \logoleft
+        };
     \fi
 
     \vspace{14ex}
